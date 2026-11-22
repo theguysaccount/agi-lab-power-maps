@@ -3,7 +3,7 @@
  "results": {
   "https://openai.com/our-structure": {
    "status": "ok",
-   "http": 308,
+   "http": 200,
    "error": "",
    "since": null,
    "refs": [
@@ -21,7 +21,7 @@
   },
   "https://openai.com/index/evolving-our-structure": {
    "status": "ok",
-   "http": 308,
+   "http": 200,
    "error": "",
    "since": null,
    "refs": [
