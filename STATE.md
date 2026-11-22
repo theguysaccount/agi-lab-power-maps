@@ -10,3 +10,6 @@
   that name only an outlet). All 8 linked sources answered on 22 November 2026.
 - **Gaps that need a person:** facts are "as of late 2025 / early 2026" and six months old, so every lab page shows "review
   due"; unlinked outlet citations should be replaced with specific articles in the essays themselves.
+- **Machines:** the first schedule-triggered runs, on 22 November 2026, passed: `selftest.yml` (run 45049250419) and `weekly.yml`
+  (run 45052859097). The temporary proof schedules that forced them were then removed; the regular schedules in
+  `OPERATIONS.md` remain.
