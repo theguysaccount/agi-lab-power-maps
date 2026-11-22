@@ -1,0 +1,27 @@
+# Tests on every push and pull request: extraction from saved copies of the essays, validation,
+# and the static build (verbatim claims, sources, review dates, indexing).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-24.04, python: "3.9" }    # the oldest Python the scripts support (setup-python has no 3.9 for Ubuntu 26.04)
+          - { os: ubuntu-latest, python: "3.12" }
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tests -t . -v

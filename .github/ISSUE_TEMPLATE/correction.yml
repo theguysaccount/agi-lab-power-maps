@@ -1,0 +1,23 @@
+name: Correction
+description: A fact about a lab that is wrong or out of date, with a source.
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: input
+    id: lab
+    attributes:
+      label: Lab
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or out of date
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source (https link to the filing, announcement or reporting)
+    validations:
+      required: true

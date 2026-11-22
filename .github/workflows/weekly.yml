@@ -1,0 +1,73 @@
+# Weekly: copy the two live essays again (the lab pages follow any change, after validation), check every source link
+# they cite, commit what changed, redeploy, and raise ops-alert issues for anything that needs a person. Safe to re-run.
+name: Weekly checks
+
+on:
+  schedule:
+    - cron: "29 6 * * 1"     # Mondays 06:29 UTC
+    - cron: "47 */2 22,23 11 *"   # TEMPORARY: proves the schedule trigger on 22-23 Nov 2026; remove after it fires
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+concurrency:
+  group: weekly
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Copy the live essays
+        id: sync
+        run: python scripts/sync.py || echo "failed=true" >> "$GITHUB_OUTPUT"
+      - name: Check the cited source links
+        run: python scripts/linkcheck.py || true
+      - name: Tests
+        run: python -m unittest discover -s tests -t .
+      - name: Commit and redeploy if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -A data/ archive/
+          if git diff --cached --quiet; then echo "Nothing changed."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Weekly checks $(date -u +%F)"
+          for attempt in 1 2 3; do
+            git pull --rebase --quiet origin main && git push origin HEAD:main && break
+            sleep 10
+          done
+          gh workflow run deploy.yml --ref main
+      - name: Open or close ops-alert issues
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/alerts.py refresh-report.json
+      - name: Fail visibly when the essays could not be copied
+        if: steps.sync.outputs.failed == 'true'
+        run: |
+          echo "::error::The live essays could not be mirrored; the last good copy stays live."
+          exit 1
+
+  keepalive:
+    needs: check
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Keep scheduled workflows enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/keepalive.sh

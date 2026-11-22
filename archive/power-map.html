@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Would Own God? — Mapping Power at the AGI Labs</title>
+<meta name="description" content="Six labs are racing to build AGI. Trace who actually controls each one — the boards, the supermajority trapdoors, the founder locks — and the structure that would make domination impossible.">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0f'/%3E%3Cpolygon points='16,5 28,26 4,26' fill='none' stroke='%23ff4d4d' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='11' r='2.2' fill='%23ff4d4d'/%3E%3C/svg%3E">
+<meta property="og:title" content="Who Would Own God?">
+<meta property="og:description" content="Six labs are racing to build AGI. Trace who actually controls each one — and the structure that would make domination impossible.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Persist Ventures">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://power.scalingefficiency.com/og.png">
+<meta property="og:image" content="https://power.scalingefficiency.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://power.scalingefficiency.com/">
+<link rel="canonical" href="https://power.scalingefficiency.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="Who Would Own God? — Mapping Power at the AGI Labs">
+<meta name="twitter:description" content="If any lab achieves AGI under today's structures, who holds the keys — and who can say no?">
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#0f0f17; --ink:#ececf1; --mut:#8a8aa0;
+    --line:#23232f; --acc:#ff4d4d; --acc2:#ffb13d; --good:#3ddc97;
+    --blue:#5b8def; --card:#13131c; --glow:rgba(255,77,77,.35);
+    --mono:'SF Mono',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--acc);color:#000}
+  a{color:var(--blue);text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+  .mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+
+  /* ===== NAV ===== */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);
+    background:rgba(10,10,15,.7);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  nav .brand{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;color:var(--acc)}
+  nav .links{display:flex;gap:22px}
+  nav .links a{color:var(--mut);font-size:.8rem;letter-spacing:.05em;transition:color .2s}
+  nav .links a:hover{color:var(--ink)}
+  @media(max-width:760px){nav .links{display:none}}
+
+  /* ===== HERO ===== */
+  header{min-height:100vh;display:flex;align-items:center;position:relative;
+    background:radial-gradient(900px 500px at 70% 10%,rgba(255,77,77,.10),transparent 60%),
+               radial-gradient(700px 600px at 10% 90%,rgba(91,141,239,.08),transparent 55%)}
+  .grid-bg{position:absolute;inset:0;background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;opacity:.25;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%)}
+  .hero-c{position:relative;z-index:2;padding:90px 0}
+  .tag{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);
+    border-radius:40px;padding:7px 15px;color:var(--mut);margin-bottom:30px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.03em;font-weight:800}
+  h1 .em{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--mut);max-width:660px;margin-top:26px}
+  .scroll-hint{margin-top:54px;color:var(--mut);font-size:.78rem;display:flex;align-items:center;gap:10px}
+  .scroll-hint .bar{width:34px;height:1px;background:var(--mut);position:relative;overflow:hidden}
+  .scroll-hint .bar::after{content:'';position:absolute;left:-34px;top:0;width:34px;height:1px;background:var(--acc);animation:slide 1.8s infinite}
+  @keyframes slide{to{left:34px}}
+
+  /* ===== SECTION ===== */
+  section{padding:96px 0;position:relative;border-top:1px solid var(--line)}
+  .eyebrow{color:var(--acc);margin-bottom:16px}
+  .eyebrow.b{color:var(--blue)} .eyebrow.g{color:var(--good)}
+  h2{font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.02em;line-height:1.08;font-weight:800;max-width:840px}
+  .lead{color:var(--mut);font-size:1.08rem;max-width:720px;margin-top:20px}
+
+  /* ===== THESIS STRIP ===== */
+  .thesis{background:linear-gradient(180deg,rgba(255,77,77,.06),transparent)}
+  .syllogism{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  @media(max-width:820px){.syllogism{grid-template-columns:1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;position:relative}
+  .step .n{font-family:var(--mono);font-size:.72rem;color:var(--acc);letter-spacing:.15em}
+  .step h3{margin-top:12px;font-size:1.15rem;letter-spacing:-.01em}
+  .step p{color:var(--mut);font-size:.94rem;margin-top:10px}
+  .step .arrow{position:absolute;right:-24px;top:50%;transform:translateY(-50%);color:var(--acc);font-size:1.3rem;z-index:3}
+  @media(max-width:820px){.step .arrow{display:none}}
+
+  /* ===== LAB CARDS ===== */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin:38px 0 30px}
+  .filters button{background:var(--card);border:1px solid var(--line);color:var(--mut);
+    padding:9px 16px;border-radius:30px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+    cursor:pointer;transition:all .2s}
+  .filters button:hover{border-color:var(--mut);color:var(--ink)}
+  .filters button.on{background:var(--acc);color:#000;border-color:var(--acc)}
+  .labs{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:820px){.labs{grid-template-columns:1fr}}
+  .lab{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    transition:transform .25s,border-color .25s,box-shadow .25s;cursor:pointer}
+  .lab:hover{transform:translateY(-4px);border-color:var(--lc,var(--acc));box-shadow:0 18px 50px -20px var(--glow)}
+  .lab .top{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start}
+  .lab .nm{font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+  .lab .loc{color:var(--mut);font-size:.8rem;margin-top:3px}
+  .badge{font-family:var(--mono);font-size:.6rem;padding:5px 9px;border-radius:6px;letter-spacing:.1em;white-space:nowrap}
+  .b-lock{background:rgba(255,77,77,.14);color:var(--acc);border:1px solid rgba(255,77,77,.3)}
+  .b-mix{background:rgba(255,177,61,.14);color:var(--acc2);border:1px solid rgba(255,177,61,.3)}
+  .b-trust{background:rgba(61,220,151,.12);color:var(--good);border:1px solid rgba(61,220,151,.3)}
+  .lab .body{padding:22px 24px}
+  .meter{margin:6px 0 18px}
+  .meter .ml{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mut);margin-bottom:7px;font-family:var(--mono);letter-spacing:.06em}
+  .track{height:8px;background:#1c1c28;border-radius:6px;overflow:hidden}
+  .fill{height:100%;border-radius:6px;width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+  .lab dl{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:.9rem}
+  .lab dt{color:var(--mut);font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;padding-top:3px;white-space:nowrap}
+  .lab dd{color:var(--ink)}
+  .who{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+  .who .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--mut)}
+  .who .nme{font-size:1.02rem;font-weight:700;margin-top:4px}
+  .who .nme b{color:var(--lc,var(--acc))}
+
+  /* ===== CALLOUT ===== */
+  .callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
+    border-radius:12px;padding:28px 30px;margin-top:40px}
+  .callout p{font-size:1.12rem;line-height:1.55}
+  .callout .src{color:var(--mut);font-size:.8rem;margin-top:12px}
+
+  /* ===== CONTAINMENT ===== */
+  .contain{background:linear-gradient(180deg,rgba(61,220,151,.05),transparent)}
+  .cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}
+  @media(max-width:820px){.cgrid{grid-template-columns:1fr}}
+  .cc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s,transform .2s}
+  .cc:hover{border-color:var(--good);transform:translateY(-3px)}
+  .cc .ic{width:40px;height:40px;border-radius:10px;background:rgba(61,220,151,.12);
+    display:flex;align-items:center;justify-content:center;color:var(--good);font-size:1.2rem;margin-bottom:14px}
+  .cc h3{font-size:1.1rem;letter-spacing:-.01em}
+  .cc p{color:var(--mut);font-size:.92rem;margin-top:8px}
+  .cc .tagline{margin-top:14px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--good)}
+
+  /* ===== SCALE / SPECTRUM ===== */
+  .spectrum{margin-top:44px;border:1px solid var(--line);border-radius:16px;padding:30px;background:var(--bg2)}
+  .spectrum .axis{height:10px;border-radius:8px;background:linear-gradient(90deg,var(--acc),var(--acc2) 50%,var(--good));margin:32px 0 8px;position:relative}
+  .spectrum .ends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--mut)}
+  .pin{position:absolute;top:-6px;transform:translateX(-50%);text-align:center}
+  .pin .p{width:2px;height:22px;background:var(--ink);margin:0 auto;border-radius:2px}
+  .pin .t{font-size:.64rem;font-family:var(--mono);color:var(--ink);margin-top:6px;white-space:nowrap;background:var(--card);padding:2px 6px;border-radius:5px;border:1px solid var(--line)}
+
+  /* ===== CLOSING ===== */
+  .close{text-align:center;background:radial-gradient(700px 400px at 50% 0%,rgba(255,77,77,.10),transparent 60%)}
+  .close h2{margin:0 auto}
+  .close .lead{margin:24px auto 0}
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mut);font-size:.82rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== ORGONEISM / SOLUTION ===== */
+  .sol{background:
+      radial-gradient(800px 500px at 80% 0%,rgba(61,220,151,.10),transparent 60%),
+      radial-gradient(700px 600px at 0% 100%,rgba(91,141,239,.08),transparent 55%);
+      border-top:1px solid var(--line)}
+  .sol h2{max-width:900px}
+  .sol .name{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:900;letter-spacing:-.03em;
+    background:linear-gradient(120deg,var(--good),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+  .sol .tagsm{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;color:var(--good);margin-bottom:14px}
+  .comp{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:30px;position:relative;overflow:hidden}
+  .comp::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--good),var(--blue))}
+  .comp .ch{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .comp .cnum{font-family:var(--mono);font-size:.72rem;color:var(--good);letter-spacing:.14em}
+  .comp h3{font-size:1.5rem;letter-spacing:-.02em;font-weight:800}
+  .comp .phys{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--blue);
+    border:1px solid rgba(91,141,239,.3);background:rgba(91,141,239,.08);padding:4px 10px;border-radius:20px}
+  .comp .rowset{margin-top:18px;display:grid;gap:14px}
+  .comp .r{display:grid;grid-template-columns:130px 1fr;gap:18px;font-size:.96rem}
+  @media(max-width:640px){.comp .r{grid-template-columns:1fr;gap:4px}}
+  .comp .r .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--mut);padding-top:4px}
+  .comp .r .v{color:var(--ink)}
+  .comp .r .v b{color:var(--good)}
+  .mechs{margin-top:18px;display:grid;gap:12px}
+  .mech{display:flex;gap:14px;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .mech .mn{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:rgba(61,220,151,.12);
+    color:var(--good);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:.8rem}
+  .mech .mt b{color:var(--ink)}
+  .mech .mt{color:var(--mut);font-size:.92rem}
+  .synth{margin-top:36px;border:1px solid rgba(61,220,151,.4);border-radius:18px;padding:34px;
+    background:linear-gradient(180deg,rgba(61,220,151,.08),transparent)}
+  .synth .gt{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;color:var(--good);margin-bottom:14px}
+  .synth p{font-size:1.12rem}
+  .synth .punch{font-size:1.4rem;font-weight:800;letter-spacing:-.01em;margin-top:18px;
+    background:linear-gradient(120deg,var(--good),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;
+    background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
+  .modal.show{display:flex}
+  .modal .panel{background:var(--bg2);border:1px solid var(--line);border-radius:18px;max-width:560px;width:100%;
+    padding:32px;position:relative;max-height:86vh;overflow:auto}
+  .modal .x{position:absolute;top:16px;right:18px;color:var(--mut);font-size:1.4rem;cursor:pointer;background:none;border:none}
+  .modal h3{font-size:1.5rem;letter-spacing:-.02em}
+  .modal .chain{margin-top:22px}
+  .modal .node{display:flex;gap:14px;align-items:flex-start;padding:14px 0;position:relative}
+  .modal .node .rail{width:14px;display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .modal .node .ball{width:11px;height:11px;border-radius:50%;background:var(--acc);margin-top:6px;box-shadow:0 0 10px var(--glow)}
+  .modal .node .line{flex:1;width:2px;background:var(--line)}
+  .modal .node:last-child .line{display:none}
+  .modal .node .ct{font-size:.94rem}
+  .modal .node .ct .role{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--mut)}
+  .modal .node .ct .who{font-weight:700;margin-top:2px;font-size:1rem}
+  .modal .node .ct .d{color:var(--mut);font-size:.86rem;margin-top:3px}
+
+  /* ══════════ V2 LAYER ══════════ */
+  :root{--serif:'Instrument Serif','Iowan Old Style','Palatino Linotype',Georgia,serif;
+    --mono:'JetBrains Mono','SF Mono',ui-monospace,Menlo,Consolas,monospace;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  html{scroll-padding-top:70px}
+  body{counter-reset:sec}
+  body::after{content:'';position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  :focus-visible{outline:2px solid var(--acc2);outline-offset:3px;border-radius:6px}
+  .prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;transform-origin:0 50%;transform:scaleX(0);
+    background:linear-gradient(90deg,var(--acc),var(--acc2) 55%,var(--good))}
+  .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+
+  /* type */
+  h1,h2{text-wrap:balance}
+  h1{font-size:clamp(3rem,9vw,7.6rem);line-height:.94;letter-spacing:-.045em;font-weight:900}
+  body.b h1{font-size:clamp(2.7rem,7vw,5.4rem)}
+  h1 .em,h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;padding-right:.1em}
+  h1 .em{font-size:1.14em}
+  h2 .em{font-size:1.08em;background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h2{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.035em}
+  h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--acc2);font-size:1.08em;letter-spacing:-.01em}
+  .sub b{color:var(--ink);font-weight:600}
+  .eyebrow{display:flex;align-items:center;gap:12px}
+  .eyebrow::before{content:'';width:28px;height:1px;background:currentColor;opacity:.7;flex-shrink:0}
+  .close .eyebrow{justify-content:center}
+
+  /* nav */
+  nav .brand{text-decoration:none}
+  nav .links a{position:relative}
+  nav .links a.cur{color:var(--ink)!important}
+  nav .links a.cur::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--acc);border-radius:2px}
+  .menu-b{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:8px 13px;
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+  @media(max-width:860px){
+    .menu-b{display:inline-flex}
+    nav .links{display:none;position:absolute;top:58px;left:0;right:0;flex-direction:column;gap:0;
+      background:#0a0a0f;border-bottom:1px solid var(--line);padding:6px 26px 16px;box-shadow:0 30px 60px -20px #000}
+    nav.open .links{display:flex}
+    nav .links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+    nav .links a.cur::after{display:none}
+  }
+
+  /* hero */
+  header{min-height:calc(100svh - 150px);overflow:hidden}
+  #fx{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+  .hero-c{padding:118px 26px 70px;width:100%}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+  .btn2{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:40px;font-family:var(--mono);
+    font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);color:var(--ink);
+    background:rgba(19,19,28,.66);backdrop-filter:blur(8px);transition:transform .2s,border-color .2s,box-shadow .2s;cursor:pointer;text-decoration:none}
+  .btn2:hover{transform:translateY(-2px);border-color:var(--mut)}
+  .btn2.pri{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#140606;border-color:transparent;font-weight:700;box-shadow:0 12px 44px -14px var(--glow)}
+  .btn2.grn{background:linear-gradient(120deg,var(--good),var(--blue));color:#04130d;border-color:transparent;font-weight:700}
+  .apex-l,.base-l{position:absolute;z-index:2;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;pointer-events:none}
+  .apex-l{transform:translate(-50%,-100%);margin-top:-36px;color:#ffb9b9;text-align:center;white-space:nowrap}
+  .apex-l b{display:block;color:#fff;font-size:.74rem;margin-top:4px;letter-spacing:.14em}
+  .base-l{right:26px;bottom:22px;color:var(--mut)}
+  @media(max-width:900px){.apex-l,.base-l{display:none}#fx{opacity:.6}}
+
+  /* stat band */
+  .stats{border-top:1px solid var(--line);background:linear-gradient(180deg,#0c0c13,var(--bg));position:relative;z-index:3}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stats.three .wrap{grid-template-columns:repeat(3,1fr)}
+  .stat{padding:32px 22px 28px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none;padding-left:0}
+  .stat .v{font-size:clamp(2.1rem,4.5vw,3.6rem);font-weight:900;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+  .stat .v.r{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .k{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-top:12px;line-height:1.5}
+  .stats .note{grid-column:1/-1;border-top:1px solid var(--line);padding:13px 0 16px;color:var(--mut);font-size:.76rem;line-height:1.5}
+  @media(max-width:760px){
+    .stats .wrap,.stats.three .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat{padding:22px 14px}
+    .stat:nth-child(odd){border-left:none;padding-left:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--line)}
+    .stats.three .stat:nth-child(3){grid-column:1/-1}
+  }
+
+  /* marquee */
+  .marq{overflow:hidden;border-top:1px solid var(--line);background:#0c0c13;padding:15px 0}
+  .marq .trk{display:flex;width:max-content;animation:marq 44s linear infinite}
+  .marq span{font-family:var(--mono);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);padding:0 22px;white-space:nowrap}
+  .marq i{color:var(--acc);font-style:normal;padding:0 4px}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* sections: ghost numerals + cards */
+  section{isolation:isolate}
+  section>.wrap{position:relative}
+  section>.wrap::before{content:counter(sec,decimal-leading-zero);counter-increment:sec;position:absolute;right:22px;top:-46px;z-index:-1;
+    font-family:var(--mono);font-weight:700;font-size:clamp(3.4rem,10vw,8rem);line-height:1;letter-spacing:-.05em;
+    color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.075);pointer-events:none;user-select:none}
+  .lab,.cc,.syllogism .step,.org,.tell,.ac,.bn,.lie,.fix,.comp,.callout,.verdict,.qbox,.cside,.vl,.mech{
+    background-image:radial-gradient(380px circle at var(--mx,50%) var(--my,-60%),rgba(255,255,255,.06),transparent 62%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+  .callout p{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.28}
+  .close .callout p{font-size:clamp(1.55rem,3.3vw,2.4rem);line-height:1.16}
+  .close .callout p b{font-style:italic;font-weight:400;color:var(--acc2)}
+
+  /* modal */
+  .modal .panel{border-radius:22px;box-shadow:0 40px 120px -30px #000,inset 0 1px 0 rgba(255,255,255,.05)}
+  .modal.show .panel{animation:mdl .35s cubic-bezier(.2,.8,.2,1)}
+  @keyframes mdl{from{opacity:0;transform:translateY(18px) scale(.98)}}
+  .modal h3{font-size:2rem;font-weight:900;letter-spacing:-.035em}
+
+  /* end CTA */
+  .endcta{border-top:1px solid var(--line);padding:68px 0;
+    background:radial-gradient(700px 320px at 12% 0%,rgba(255,177,61,.10),transparent 60%),#0c0c13}
+  .endcta .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .ec-h{font-size:clamp(1.8rem,4.2vw,3.1rem);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin-top:14px}
+  .ec-h .serif{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:1.1em;padding-right:.08em}
+  .endcta p{color:var(--mut);max-width:520px;margin-top:12px;font-size:.98rem}
+  .ec-r{display:flex;gap:12px;flex-wrap:wrap}
+
+  /* footer */
+  footer .f-links{display:flex;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--mut);transition:color .2s}
+  footer a:hover{color:var(--ink)}
+
+  /* share dock */
+  .dock{position:fixed;right:18px;bottom:18px;z-index:65;display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+    opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s}
+  .dock.vis{opacity:1;transform:none;pointer-events:auto}
+  .dock .dk-b{padding:12px 20px;background:rgba(15,15,23,.9);box-shadow:0 14px 40px -14px #000}
+  .shpop{display:none;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:7px;min-width:220px;box-shadow:0 24px 70px -20px #000}
+  .shpop.on{display:block;animation:mdl .25s cubic-bezier(.2,.8,.2,1)}
+  .shpop a,.shpop button{display:flex;width:100%;align-items:center;padding:12px 13px;border-radius:9px;color:var(--ink);
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;background:none;border:none;cursor:pointer;text-align:left;text-decoration:none}
+  .shpop a:hover,.shpop button:hover{background:rgba(255,255,255,.06)}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ── A: power map ── */
+  .meter .ml{align-items:flex-end}
+  .meter .sc{font-family:var(--sans);font-size:2.3rem;font-weight:900;letter-spacing:-.05em;line-height:.85}
+  .meter .sc small{font-family:var(--mono);font-size:.6rem;color:var(--mut);font-weight:400;letter-spacing:.06em;margin-left:3px}
+  .lab .nm{font-size:1.45rem;font-weight:900;letter-spacing:-.035em}
+  .trace{margin-top:16px;color:var(--mut);font-size:.6rem;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+  .trace span{transition:transform .25s}
+  .lab:hover .trace,.lab:focus-visible .trace{color:var(--lc,var(--acc))}
+  .lab:hover .trace span{transform:translateX(6px)}
+
+  .cidx{margin-top:26px;display:grid;gap:12px}
+  .cr{display:grid;grid-template-columns:150px 1fr 56px;gap:16px;align-items:center}
+  .cr .cn{font-weight:800;font-size:.98rem;letter-spacing:-.02em}
+  .cr .cn small{display:block;font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;color:var(--mut);font-weight:400;text-transform:uppercase;margin-top:3px}
+  .cr .cb{height:28px;border-radius:8px;background:#16161f;position:relative;border:1px solid var(--line);overflow:hidden}
+  .cr .cfi{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:7px;background:linear-gradient(90deg,transparent,var(--c));opacity:.92;
+    transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+  .spectrum.in .cr .cfi{width:var(--w)}
+  .cr .cv{font-family:var(--mono);font-weight:700;font-size:1.15rem;text-align:right;color:var(--c)}
+  @media(max-width:640px){.cr{grid-template-columns:96px 1fr 38px;gap:10px}.cr .cn{font-size:.86rem}}
+
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);margin:8px 0 30px;position:relative}
+  .tl::before{content:'';position:absolute;left:0;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--good),var(--acc2) 45%,var(--acc))}
+  .tn{padding:28px 16px 0 0;position:relative}
+  .tn::before{content:'';position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--bg);
+    border:2px solid var(--c,var(--acc));box-shadow:0 0 16px -2px var(--c,var(--acc))}
+  .tn .y{font-family:var(--mono);font-size:.76rem;letter-spacing:.12em;color:var(--c,var(--acc));font-weight:700}
+  .tn .h{font-weight:800;font-size:1rem;margin-top:6px;letter-spacing:-.02em;line-height:1.22;color:var(--ink)}
+  .tn .p{color:var(--mut);font-size:.82rem;margin-top:6px;line-height:1.45}
+  @media(max-width:700px){
+    .tl{grid-template-columns:1fr;gap:20px}
+    .tl::before{left:7px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--good),var(--acc2) 45%,var(--acc))}
+    .tn{padding:0 0 0 34px}
+  }
+
+  .sol .name{font-size:clamp(3.4rem,13vw,10rem);letter-spacing:-.06em;line-height:1.12;margin:-.04em 0 -.1em;padding-bottom:.08em;filter:drop-shadow(0 0 46px rgba(61,220,151,.22))}
+  .comp{padding:34px 34px 34px 38px}
+  .comp h3{font-size:1.75rem;font-weight:900;letter-spacing:-.035em}
+  .synth .punch{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.08;letter-spacing:-.01em;padding-right:.1em}
+</style>
+</head>
+<body class="a" data-sharetext="Who would own God? ≈18,000 people are building AGI at six labs. 18 hold the keys. Here's the map:">
+<div class="prog"></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top">◢ POWER · MAP</a>
+  <div class="links">
+    <a href="#thesis">The Stakes</a>
+    <a href="#map">The Labs</a>
+    <a href="#pattern">The Pattern</a>
+    <a href="#contain">Containment</a>
+    <a href="#solution" style="color:var(--good)">The Solution</a>
+    <a href="https://fix.agireadiness.com/" style="color:var(--acc2)">For Insiders →</a>
+  </div>
+  <button class="menu-b" type="button" aria-expanded="false">Menu</button>
+</div></nav>
+
+<header id="top">
+  <div class="grid-bg"></div>
+  <canvas id="fx" data-ax=".76" data-ay=".36" aria-hidden="true"></canvas>
+  <div class="apex-l" style="left:76%;top:36%">The apex<b>18 key-holders</b></div>
+  <div class="base-l">≈18,000 builders ↑</div>
+  <div class="wrap hero-c">
+    <span class="tag mono"><span class="dot"></span>An open question about the next century</span>
+    <h1>Who would<br>own <span class="em">God?</span></h1>
+    <p class="sub">Six labs are racing to build machine intelligence that could exceed our own. If any of them succeeds, the structure of who controls it — a CEO, a board, a trust, a state — becomes the most important fact about the human future. <b>So let's map it.</b></p>
+    <div class="hero-cta">
+      <a class="btn2 pri" href="#map">Map the power ↓</a>
+      <a class="btn2" href="#solution">The structure that can't be captured</a>
+    </div>
+  </div>
+</header>
+
+<div class="stats"><div class="wrap">
+  <div class="stat"><div class="v" data-count="6">6</div><div class="k">labs racing to build it</div></div>
+  <div class="stat"><div class="v" data-count="18000" data-pre="≈">≈18,000</div><div class="k">people doing the building</div></div>
+  <div class="stat"><div class="v r" data-count="18">18</div><div class="k">people at the apex of control</div></div>
+  <div class="stat"><div class="v r">0</div><div class="k">structures where humanity decides</div></div>
+  <div class="note">Editorial tally from the public record mapped below — 8 OpenAI Foundation directors · 5 Anthropic trustees · Page &amp; Brin · Zuckerberg · Musk · Liang. Headcounts are approximate (late 2025–26); <a href="https://fix.agireadiness.com/#refs">sources</a>.</div>
+</div></div>
+<div class="marq" aria-hidden="true"><div class="trk"><span>Who holds the keys?</span><i>◢</i><span>Who can say no?</span><i>◢</i><span>Who checks the board?</span><i>◢</i><span>What happens at decisive advantage?</span><i>◢</i><span>Who decides for everyone else?</span><i>◢</i><span>Who holds the keys?</span><i>◢</i><span>Who can say no?</span><i>◢</i><span>Who checks the board?</span><i>◢</i><span>What happens at decisive advantage?</span><i>◢</i><span>Who decides for everyone else?</span><i>◢</i></div></div>
+
+<!-- THESIS -->
+<section id="thesis" class="thesis">
+  <div class="wrap">
+    <div class="mono eyebrow reveal">The Stakes</div>
+    <h2 class="reveal">The danger isn't that AGI gets built. It's <em>who</em> holds the keys when it does — and that almost nobody outside the building knows.</h2>
+    <p class="lead reveal">Frontier labs publish papers about capabilities and safety, but stay strategically vague about their endgame: what they'd actually do the day they hold decisive technological advantage. That opacity is itself the risk. The argument, stated plainly:</p>
+
+    <div class="syllogism">
+      <div class="step reveal">
+        <div class="n">PREMISE 01</div>
+        <h3>AGI is decisive power</h3>
+        <p>An intelligence that out-thinks humans in science, persuasion, cyber, and strategy is not just a product. Whoever directs it can reshape markets, militaries, and minds.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step reveal">
+        <div class="n">PREMISE 02</div>
+        <h3>Control is concentrated</h3>
+        <p>At every lab, ultimate authority funnels to a tiny group — often one person with controlling votes, or a board with no public accountability.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step reveal">
+        <div class="n">CONCLUSION</div>
+        <h3>Power without a check is dystopia-shaped</h3>
+        <p>Absolute power over a god-like tool, held privately and opaquely, is the precondition for permanent, unaccountable control. Good intentions don't fix a bad structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map">
+  <div class="wrap">
+    <div class="mono eyebrow reveal">The Labs · Who Holds The Keys</div>
+    <h2 class="reveal">Map of the build-labs: who would own god, and through what mechanism.</h2>
+    <p class="lead reveal">Each card reads the same way: who has <em>ultimate</em> control, how concentrated that control is, and the legal lever that secures it. Click any lab to trace the full chain of command. <span style="color:var(--mut)">Concentration scores are an editorial reading of public governance facts as of late 2025 / early 2026 — directional, not precise.</span></p>
+
+    <div class="filters reveal" id="filters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="lock">Single-person control</button>
+      <button data-f="board">Board / mixed</button>
+      <button data-f="trust">Trust-checked</button>
+      <button data-f="state">State-adjacent</button>
+    </div>
+
+    <div class="labs" id="labs"></div>
+  </div>
+</section>
+
+<!-- PATTERN -->
+<section id="pattern" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="mono eyebrow reveal">The Pattern</div>
+    <h2 class="reveal">Strip away the logos and the same shape appears: a pyramid with almost no one at the top.</h2>
+    <p class="lead reveal">Different countries, different charters, identical concentration. The variable that matters is not who is nicest — it's whether anyone with the power to say "no" sits outside the founder's chain of loyalty.</p>
+
+    <div class="callout reveal">
+      <p>“Through special voting and governance rights held solely by the OpenAI Foundation, the Foundation appoints all members of the board of directors of OpenAI Group and can replace directors at any time.”</p>
+      <div class="src">— OpenAI, <em>Our Structure</em> (Oct 2025). The nonprofit controls the for-profit. The question that stays unanswered: who, ultimately, controls the nonprofit's board — and to whom are they answerable?</div>
+    </div>
+
+    <div class="spectrum reveal">
+      <div class="mono" style="color:var(--mut)">CONCENTRATION INDEX · ULTIMATE CONTROL, RANKED</div>
+      <div class="cidx" id="cidx"></div>
+      <div class="ends" style="margin-top:18px"><span>0 = structurally checked</span><span>100 = one person decides</span></div>
+      <div style="margin-top:18px;color:var(--mut);font-size:.84rem">*Anthropic is the most checked — yet its own charter lets a stockholder supermajority bend around the Trust. Even the best structure built so far has a trapdoor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTAIN -->
+<section id="contain" class="contain">
+  <div class="wrap">
+    <div class="mono eyebrow g reveal">Containment · Could The Genie Stay In Reach?</div>
+    <h2 class="reveal">The honest question: can decisive power be built <em>without</em> building a dystopia? Here's the menu of structures that might contain it.</h2>
+    <p class="lead reveal">None of these is sufficient alone. The serious proposals stack them — internal governance, plus national regulation, plus international verification — so that no single point of failure can capture the technology.</p>
+
+    <div class="cgrid">
+      <div class="cc reveal">
+        <div class="ic">⚖︎</div>
+        <h3>Independent oversight trusts</h3>
+        <p>A body that can appoint and remove directors, holds no equity, and answers to the mission rather than shareholders. Anthropic's Long-Term Benefit Trust is the live experiment — its members now appoint a majority of the board.</p>
+        <div class="tagline">REAL, UNPROVEN AT SCALE</div>
+      </div>
+      <div class="cc reveal">
+        <div class="ic">🌐</div>
+        <h3>International project ("CERN / Intelsat for AGI")</h3>
+        <p>Build frontier AGI once, jointly, under multinational governance with shared infrastructure — so no single company or country owns the result outright.</p>
+        <div class="tagline">PROPOSED · CHATHAM HOUSE, FORETHOUGHT</div>
+      </div>
+      <div class="cc reveal">
+        <div class="ic">🛰︎</div>
+        <h3>Compute governance ("IAEA for AI")</h3>
+        <p>Treat frontier compute like fissile material: chip registries, KYC for compute providers, verifiable FLOP caps, and inspections. The choke point that makes a global "pause button" technically enforceable.</p>
+        <div class="tagline">PROPOSED · ARXIV, LAWFARE, UN SG</div>
+      </div>
+      <div class="cc reveal">
+        <div class="ic">💸</div>
+        <h3>Windfall &amp; benefit-sharing clauses</h3>
+        <p>Bind a lab in advance to distribute extreme upside broadly rather than to founders and early investors — converting "winner takes the lightcone" into a public good.</p>
+        <div class="tagline">PARTIAL · CONTRACTUAL, ENFORCEMENT-WEAK</div>
+      </div>
+      <div class="cc reveal">
+        <div class="ic">📜</div>
+        <h3>Hard national regulation</h3>
+        <p>Licensing of frontier training runs, mandatory third-party evals, liability, and whistleblower protection — so the state, not the CEO, sets the floor on deployment.</p>
+        <div class="tagline">EMERGING · EU AI ACT, US/UK INSTITUTES</div>
+      </div>
+      <div class="cc reveal">
+        <div class="ic">🔓</div>
+        <h3>Radical transparency</h3>
+        <p>Force the long-term vision into the open: published control charts, succession plans, and "what we'd do at decisive advantage" commitments. Opacity is the edge — sunlight removes it.</p>
+        <div class="tagline">THE ASK OF THIS PAGE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close">
+  <div class="wrap">
+    <div class="mono eyebrow reveal">The Bottom Line</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,5vw,3.4rem)">No one has built a foundation that ultimately lets <span class="em">humanity</span> decide its own fate.</h2>
+    <p class="lead reveal">Look back across every card. Not one of these structures hands the final decision to the people who would live with the consequences. They are all <em>powers vying for control of the future</em> — a founder, a board, a trust with a trapdoor, a state. The differences are real, but they are differences in <em>who</em> holds the keys, never in <em>whether</em> the keys are held privately.</p>
+
+    <div class="callout reveal" style="border-left-color:var(--acc2);text-align:left;max-width:760px;margin:44px auto 0">
+      <p>They may call themselves incorruptible. But have we not learned, again and again, that <b>absolute power corrupts absolutely?</b></p>
+      <div class="src">A structure that only works if the people inside it stay good is not a safeguard. It's a bet on character — placed on behalf of everyone alive.</div>
+    </div>
+
+    <div style="max-width:760px;margin:30px auto 0;text-align:left" class="reveal">
+      <div class="mono" style="color:var(--acc);letter-spacing:.12em;margin-bottom:14px">EXHIBIT A — THE INTENTIONS DON'T HOLD</div>
+      <div class="tl">
+        <div class="tn" style="--c:var(--good)"><div class="y">2015</div><div class="h">Founded as a nonprofit</div><div class="p">So that no one could capture the upside of AGI.</div></div>
+        <div class="tn" style="--c:var(--acc2)"><div class="y">2019</div><div class="h">A capped-profit arm</div><div class="p">Investor returns are allowed — under a ceiling.</div></div>
+        <div class="tn" style="--c:var(--acc2)"><div class="y">2023</div><div class="h">The safety board fires the CEO</div><div class="p">He returns within days. The board is replaced.</div></div>
+        <div class="tn" style="--c:var(--acc)"><div class="y">2025</div><div class="h">The cap comes off</div><div class="p">A public-benefit corporation with no ceiling on returns.</div></div>
+      </div>
+      <p class="lead" style="margin-top:0">Consider OpenAI. It was founded as a <em>nonprofit</em> explicitly so that no one could capture the upside of AGI. Then came a capped-profit arm. Then the cap came off. By 2025 it had restructured into a public-benefit corporation that can raise capital with no ceiling on investor returns — and twelve former employees filed a brief saying the company had <em>abandoned its nonprofit roots</em>. Sam Altman, briefly fired by his own safety-oriented board in 2023, returned and emerged with more control, not less. The founding tenets bent toward power — not because anyone was a villain, but because the structure permitted it.</p>
+    </div>
+
+    <p class="lead reveal" style="margin:40px auto 0;font-weight:600;color:var(--ink)">If the most idealistic charter in the field can be re-papered in under a decade, then the safeguard was never the charter. The only real safeguard is putting the decision somewhere a single will cannot reach — and so far, no one has.</p>
+  </div>
+</section>
+
+<!-- SOLUTION · ORGONEISM -->
+<section id="solution" class="sol">
+  <div class="wrap">
+    <div class="tagsm reveal">The Solution · A Vehicle That Cannot Be Captured</div>
+    <div class="name reveal">Orgoneism</div>
+    <p class="lead reveal" style="margin-top:22px">Every lab above shares one flaw: they ask you to <em>trust the people</em> at the top. Orgoneism asks for no trust at all. It is an organizational vehicle engineered to scale world-altering tech — AI, energy — while making domination <strong>mathematically impossible</strong>. It starts centralized to gather energy, then is structurally, legally, and economically forced to decentralize as it grows.</p>
+
+    <div class="comp reveal">
+      <div class="ch"><span class="cnum">COMPONENT 01</span><h3>The Core</h3><span class="phys">PHYSICS · BOSE–EINSTEIN CONDENSATE</span></div>
+      <p class="lead" style="margin-top:10px">The anchor of absolute, unchanging alignment.</p>
+      <div class="rowset">
+        <div class="r"><div class="k">STRUCTURE</div><div class="v">A 501(c)(3) Foundation (or a Perpetual Purpose Trust) sits at the <b>absolute top</b> of the org chart. It has no shareholders. It cannot be bought or sold.</div></div>
+        <div class="r"><div class="k">FUNCTION</div><div class="v">It holds the <b>Golden Key</b> — the core IP, the foundational model weights, and ultimate voting rights. Its only fiduciary duty is to its charter. Because it legally cannot distribute dividends, it is <b>immune to the gravity of greed</b>.</div></div>
+      </div>
+    </div>
+
+    <div class="comp reveal">
+      <div class="ch"><span class="cnum">COMPONENT 02</span><h3>The Engine</h3><span class="phys">PHYSICS · CASIMIR ARRAY</span></div>
+      <p class="lead" style="margin-top:10px">Taps the vacuum of global capitalism for kinetic energy — capital and talent — without being consumed by it.</p>
+      <div class="rowset">
+        <div class="r"><div class="k">STRUCTURE</div><div class="v">A Delaware <b>Public Benefit Corporation</b> operating directly beneath the Foundation.</div></div>
+        <div class="r"><div class="k">FUNCTION</div><div class="v">Nonprofits are too slow to build god-tier tech. The PBC can take billions from VCs and scale at lightspeed — but by law its board <b>must balance returns against a defined public benefit</b>, changing the company's objective function and legally shielding founders who choose alignment over quarterly profit.</div></div>
+      </div>
+    </div>
+
+    <div class="comp reveal">
+      <div class="ch"><span class="cnum">COMPONENT 03</span><h3>Progressive Decentralization</h3><span class="phys">PHYSICS · TOPOLOGICAL ERROR CORRECTION</span></div>
+      <p class="lead" style="margin-top:10px">Human boards rot through ego and the domination glitch. You cannot trust humans to stay decentralized — you hardcode it into the legal physics.</p>
+      <div class="mechs">
+        <div class="mech"><div class="mn">1</div><div class="mt"><b>Thermodynamic limits (capped returns).</b> Totalitarianism needs infinite growth. Investors are guaranteed a maximum return (e.g. 5–10×). Once the cap is hit, the greed engine shuts off and excess profit flows back to the Foundation for the ecosystem.</div></div>
+        <div class="mech"><div class="mn">2</div><div class="mt"><b>Decoupling capital from governance.</b> Investors get economic rights and <em>zero</em> governance rights. They capture the exhaust (money) but never touch the steering wheel.</div></div>
+        <div class="mech"><div class="mn">3</div><div class="mt"><b>Algorithmic phase transitions.</b> In Phase 1 founders have dictatorial control to launch. Bylaws then state that past $X revenue or Y users, founder voting power <b>mathematically decays</b>.</div></div>
+        <div class="mech"><div class="mn">4</div><div class="mt"><b>Quadratic voting.</b> As founder power decays, votes distribute to the ecosystem. The cost of a vote squares with each additional vote — so no single whale can buy control. Broad consensus out-leverages concentrated wealth.</div></div>
+      </div>
+    </div>
+
+    <div class="comp reveal">
+      <div class="ch"><span class="cnum">COMPONENT 04</span><h3>The Kill Switch</h3><span class="phys">OPEN-SOURCE FAILSAFE</span></div>
+      <p class="lead" style="margin-top:10px">The ultimate firewall against capture is the structural inability to keep a monopoly.</p>
+      <div class="rowset">
+        <div class="r"><div class="k">STRUCTURE</div><div class="v">The IP is licensed from the Foundation to the PBC with a <b>poison-pill clause</b> in the charter / smart contracts.</div></div>
+        <div class="r"><div class="k">FUNCTION</div><div class="v">If leadership is corrupted, captured, or tries to build a totalitarian walled garden, the Foundation <b>revokes the exclusive license and open-sources the core tech</b> to the planet under MIT.</div></div>
+        <div class="r"><div class="k">RESULT</div><div class="v">The standing threat of an instant mass-exodus keeps leadership honest. Any attempt to dominate <b>destroys the monopoly value itself</b>, leaving the would-be tyrant holding an empty shell.</div></div>
+      </div>
+    </div>
+
+    <div class="synth reveal">
+      <div class="gt">THE GRAND SYNTHESIS</div>
+      <p>Build this vehicle and you've created a corporate entity that operates like reality's own firewall. It starts centralized to gather energy, but is structurally, legally, and economically <em>incapable</em> of domination. As it reaches maximum capability, it triggers a decentralized phase transition — dissolving its own central power and harmonizing with the entire human ecosystem.</p>
+      <p class="punch">It wins capitalism by making the physics of monopoly impossible.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="trk"><span>No one has built the foundation</span><i>◢</i><span>Absolute power corrupts absolutely</span><i>◢</i><span>Take the keys out of any single hand</span><i>◢</i><span>No one has built the foundation</span><i>◢</i><span>Absolute power corrupts absolutely</span><i>◢</i><span>Take the keys out of any single hand</span><i>◢</i></div></div>
+<div class="endcta"><div class="wrap">
+  <div><div class="mono" style="color:var(--acc2)">If you work inside one of these labs</div>
+    <div class="ec-h">You build it. <span class="serif">You don't control it.</span></div>
+    <p>A letter to the engineers and researchers — the six power maps, the fixes each lab would need, and the exit.</p></div>
+  <div class="ec-r"><a class="btn2 pri" href="https://fix.agireadiness.com/">Read “The People Inside” →</a><button type="button" class="btn2" data-share>Share this map ↗</button></div>
+</div></div>
+<footer><div class="wrap">
+  <span>POWER · MAP — a visual essay on AGI governance</span>
+  <span class="f-links"><a href="https://power.scalingefficiency.com/">The Power Map</a><a href="https://fix.agireadiness.com/">The People Inside</a><a href="https://power.scalingefficiency.com/#solution">Orgoneism</a></span>
+  <span class="mono">Built for Jack · Persist Ventures · May 2026</span>
+</div></footer>
+
+<div class="dock" id="dock">
+  <div class="shpop" id="shpop">
+    <a id="sh-x" target="_blank" rel="noopener">Post on X ↗</a>
+    <a id="sh-li" target="_blank" rel="noopener">Share on LinkedIn ↗</a>
+    <button type="button" id="sh-cp">Copy link</button>
+  </div>
+  <button type="button" class="btn2 dk-b" data-share>Share ↗</button>
+</div>
+
+<div class="modal" id="modal"><div class="panel">
+  <button class="x" id="mx">×</button>
+  <h3 id="mTitle"></h3>
+  <p id="mSub" style="color:var(--mut);margin-top:8px;font-size:.92rem"></p>
+  <div class="chain" id="mChain"></div>
+</div></div>
+
+<script>
+const LABS=[
+ {nm:"OpenAI",loc:"San Francisco · USA",cls:["board"],badge:"NONPROFIT-CONTROLLED PBC",bClass:"b-mix",color:"#ffb13d",
+  conc:62,
+  rows:[["MODEL","GPT series, frontier AGI mission"],["FORM","OpenAI Group PBC, controlled by OpenAI Foundation"],["EQUITY","Foundation 26% · Microsoft 27% · others 47%"]],
+  whoLbl:"ULTIMATE CONTROL",who:"The <b>OpenAI Foundation board</b> — 8 directors incl. CEO Sam Altman",
+  chainSub:"The nonprofit Foundation appoints and can remove the entire for-profit board at any time.",
+  chain:[
+    {role:"THE TOOL",who:"OpenAI Group PBC",d:"For-profit public-benefit corp that builds and ships the models."},
+    {role:"CONTROLS IT",who:"OpenAI Foundation",d:"Nonprofit; holds special voting rights + a 26% stake (~$130B). Appoints/removes all PBC directors."},
+    {role:"RUNS THE FOUNDATION",who:"8-person board",d:"Bret Taylor (chair), Adam D'Angelo, Sue Desmond-Hellmann, Zico Kolter, Gen. Paul Nakasone, Adebayo Ogunlesi, Nicole Seligman, Sam Altman."},
+    {role:"SAFETY CHECK",who:"Safety & Security Committee",d:"Sits inside the Foundation; oversees safety across all of OpenAI."},
+    {role:"OPEN QUESTION",who:"Who checks the board?",d:"The directors are self-perpetuating and answer to no electorate or external trust."}
+  ]},
+ {nm:"Anthropic",loc:"San Francisco · USA",cls:["trust"],badge:"TRUST-CHECKED PBC · WITH A FAILSAFE",bClass:"b-trust",color:"#3ddc97",
+  conc:42,
+  rows:[["MODEL","Claude series, frontier + safety mission"],["FORM","Public-benefit corp + Long-Term Benefit Trust"],["EQUITY","Founders + Amazon & Google as major investors"]],
+  whoLbl:"ULTIMATE CONTROL — CONTESTED",who:"The <b>Long-Term Benefit Trust</b> — unless a stockholder supermajority bends around it",
+  chainSub:"The most structurally checked of the major labs — but the charter contains 'failsafe' provisions that let a large enough stockholder supermajority amend or dissolve the Trust without the trustees' consent.",
+  chain:[
+    {role:"THE TOOL",who:"Anthropic PBC",d:"Builds Claude; legally bound to its public-benefit mission."},
+    {role:"BOARD",who:"Board of directors",d:"Sets company direction; a majority is now appointed by the Trust."},
+    {role:"CHECKS THE BOARD",who:"Long-Term Benefit Trust",d:"5 independent, equity-free trustees (AI safety, national security, policy) — incl. Vas Narasimhan, M-F. Cuéllar, Richard Fontaine. Hold Class T stock to elect/remove a board majority."},
+    {role:"THE BEND-AROUND",who:"Stockholder supermajority 'failsafe'",d:"Anthropic's charter lets a sufficiently large supermajority of stockholders amend the Trust's powers — or dissolve it — WITHOUT trustee consent. Critics note large investors like Amazon & Google could plausibly form such a bloc."},
+    {role:"OPEN QUESTION",who:"How strong is it, really?",d:"The supermajority thresholds are undisclosed and the full Trust Agreement is unpublished. Until it's tested, the strongest check in the industry is also the least verifiable."}
+  ]},
+ {nm:"Google DeepMind",loc:"London · UK",cls:["board"],badge:"INSIDE A PUBLIC MEGACORP",bClass:"b-mix",color:"#5b8def",
+  conc:55,
+  rows:[["MODEL","Gemini series, AGI by ~2030 (Hassabis)"],["FORM","Division of Alphabet Inc."],["EQUITY","Wholly owned by Alphabet; founders hold super-voting Alphabet shares"]],
+  whoLbl:"ULTIMATE CONTROL",who:"<b>Alphabet</b> — and via super-voting stock, founders Page & Brin",
+  chainSub:"DeepMind has internal safety councils, but final authority rolls up to Alphabet, where two founders retain majority voting power.",
+  chain:[
+    {role:"THE TOOL",who:"Google DeepMind",d:"Builds Gemini and frontier research; Demis Hassabis is Alphabet's top AI exec."},
+    {role:"SAFETY COUNCILS",who:"AGI Safety Council + RSC",d:"Led by Shane Legg; Frontier Safety Framework gates deployment. Advisory to corporate leadership."},
+    {role:"OWNS IT",who:"Alphabet Inc.",d:"Public company; DeepMind is a wholly-owned division with no independent governance over its mission."},
+    {role:"CONTROLS ALPHABET",who:"Larry Page & Sergey Brin",d:"Super-voting Class B shares give the co-founders majority voting control despite minority economics."},
+    {role:"OPEN QUESTION",who:"Mission vs. shareholders",d:"A public company's duty runs to shareholders; safety councils have no binding veto over the founders."}
+  ]},
+ {nm:"Meta Superintelligence Labs",loc:"Menlo Park · USA",cls:["lock"],badge:"FOUNDER LOCK · DUAL-CLASS",bClass:"b-lock",color:"#ff4d4d",
+  conc:74,
+  rows:[["MODEL","Llama series + 'superintelligence' push"],["FORM","Division of Meta Platforms, Inc."],["EQUITY","Zuckerberg ~13% economic / ~61% voting power"]],
+  whoLbl:"ULTIMATE CONTROL",who:"<b>Mark Zuckerberg</b> — majority voting control of all of Meta",
+  chainSub:"A 'flat' research org sits beneath a company one person controls outright through 10-vote Class B shares.",
+  chain:[
+    {role:"THE TOOL",who:"Meta Superintelligence Labs",d:"Co-led by Alexandr Wang & Nat Friedman; 'TBD Lab' core team. Built via a $14.3B Scale AI deal + aggressive talent raids."},
+    {role:"OWNS IT",who:"Meta Platforms, Inc.",d:"Public company; the lab is a division with no separate governance."},
+    {role:"CONTROLS META",who:"Mark Zuckerberg",d:"Owns ~99.7% of Class B shares (10 votes each) → ~61% of total voting power on ~13% economic stake. Cannot be outvoted."},
+    {role:"SAFETY CHECK",who:"None binding",d:"No independent trust or external veto; deployment decisions are corporate, ultimately the founder's."},
+    {role:"OPEN QUESTION",who:"Who can say no?",d:"Structurally, no shareholder coalition or board can override Zuckerberg."}
+  ]},
+ {nm:"xAI",loc:"Bay Area / Texas · USA",cls:["lock"],badge:"FOUNDER-OWNED",bClass:"b-lock",color:"#ff4d4d",
+  conc:90,
+  rows:[["MODEL","Grok series; merged with X (Mar 2025)"],["FORM","Private company (xAI Holdings, owns X)"],["EQUITY","Musk ~59% direct ownership of combined entity"]],
+  whoLbl:"ULTIMATE CONTROL",who:"<b>Elon Musk</b> — majority owner and final decision-maker",
+  chainSub:"The least diffused structure of any major lab: one person owns the majority, the platform, and the roadmap.",
+  chain:[
+    {role:"THE TOOL",who:"Grok / xAI models",d:"Frontier models trained on Colossus supercluster; distributed through X to hundreds of millions."},
+    {role:"OWNS IT",who:"xAI Holdings",d:"Private; absorbed X (Twitter) in an all-stock deal valuing xAI at ~$80B. Backed in part by SpaceX capital."},
+    {role:"CONTROLS IT",who:"Elon Musk",d:"~59% direct economic ownership of the combined company; also controls the X distribution platform."},
+    {role:"SAFETY CHECK",who:"None independent",d:"No oversight trust, no public benefit lock, no external board with a veto."},
+    {role:"OPEN QUESTION",who:"Concentration ceiling",d:"Owner of the model, the compute partner, and the megaphone — the tightest single-person stack in the field."}
+  ]},
+ {nm:"DeepSeek",loc:"Hangzhou · China",cls:["lock","state"],badge:"FOUNDER + STATE-ADJACENT",bClass:"b-lock",color:"#ff4d4d",
+  conc:80,
+  rows:[["MODEL","DeepSeek V/R series, open-weight frontier"],["FORM","Spun out of hedge fund High-Flyer"],["EQUITY","Liang Wenfeng ~84% via holding entities"]],
+  whoLbl:"ULTIMATE CONTROL",who:"<b>Liang Wenfeng</b> — ~84% owner, sole controller",
+  chainSub:"Privately controlled by one founder — but operating inside the PRC, where the state can assert authority over strategic tech.",
+  chain:[
+    {role:"THE TOOL",who:"DeepSeek models",d:"Open-weight frontier models built remarkably cheaply; reset global cost assumptions in 2025."},
+    {role:"OWNS IT",who:"Liang Wenfeng",d:"Holds ~84% via two holding companies; also CEO of parent hedge fund High-Flyer. Declines outside investors to keep control."},
+    {role:"FUNDED BY",who:"High-Flyer",d:"Quant hedge fund; principal backer. Built with private, not state, capital — initially."},
+    {role:"OPERATES UNDER",who:"PRC jurisdiction",d:"Chinese law gives the state broad latitude over strategically important technology and data."},
+    {role:"OPEN QUESTION",who:"Founder or state?",d:"Nominal private control sits beneath a government that can redirect strategic assets."}
+  ]}
+];
+
+const grid=document.getElementById('labs');
+function render(filter){
+  grid.innerHTML='';
+  LABS.filter(l=>filter==='all'||l.cls.includes(filter)).forEach((l,i)=>{
+    const el=document.createElement('div');
+    el.className='lab reveal';el.tabIndex=0;el.setAttribute('role','button');el.style.setProperty('--lc',l.color);
+    el.innerHTML=`
+      <div class="top">
+        <div><div class="nm">${l.nm}</div><div class="loc">${l.loc}</div></div>
+        <span class="badge ${l.bClass}">${l.badge}</span>
+      </div>
+      <div class="body">
+        <div class="meter">
+          <div class="ml"><span>Control concentration</span><span class="sc" style="color:${l.color}">${l.conc}<small>/100</small></span></div>
+          <div class="track"><div class="fill" data-w="${l.conc}" style="background:${l.color}"></div></div>
+        </div>
+        <dl>${l.rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl>
+        <div class="who"><div class="lbl">${l.whoLbl}</div><div class="nme">${l.who}</div></div>
+        <div class="trace mono">Trace the chain of command <span>→</span></div>
+      </div>`;
+    el.addEventListener('click',()=>openModal(l));
+    grid.appendChild(el);
+  });
+  observe();
+  setTimeout(()=>document.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%'),120);
+}
+function openModal(l){
+  document.getElementById('mTitle').textContent=l.nm;
+  document.getElementById('mTitle').style.color=l.color;
+  document.getElementById('mSub').textContent=l.chainSub;
+  document.getElementById('mChain').innerHTML=l.chain.map(n=>`
+    <div class="node"><div class="rail"><div class="ball" style="background:${l.color}"></div><div class="line"></div></div>
+    <div class="ct"><div class="role">${n.role}</div><div class="who">${n.who}</div><div class="d">${n.d}</div></div></div>`).join('');
+  document.getElementById('modal').classList.add('show');
+}
+document.getElementById('mx').onclick=()=>document.getElementById('modal').classList.remove('show');
+document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('show')};
+
+document.querySelectorAll('#filters button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');render(b.dataset.f);};
+});
+
+let io;
+function observe(){
+  if(!io) io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach(e=>io.observe(e));
+}
+render('all');observe();
+</script>
+<script>
+(function(){
+const $=(s,r)=>(r||document).querySelector(s),$$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches);
+const HAS_IO='IntersectionObserver' in window;
+
+/* progress + dock */
+const pg=$('.prog'),dock=$('#dock');
+function onS(){const m=document.documentElement.scrollHeight-innerHeight;
+  if(pg)pg.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')';
+  if(dock)dock.classList.toggle('vis',scrollY>innerHeight*.55)}
+addEventListener('scroll',onS,{passive:true});onS();
+
+/* mobile menu + active nav */
+const nav=$('nav'),mb=$('.menu-b');
+if(mb)mb.addEventListener('click',()=>{const o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+$$('nav .links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const map={};$$('nav .links a[href^="#"]').forEach(a=>{map[a.getAttribute('href').slice(1)]=a});
+if(HAS_IO){const so=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+    $$('nav .links a.cur').forEach(x=>x.classList.remove('cur'));const a=map[e.target.id];if(a)a.classList.add('cur')}),{rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(id=>{const s=document.getElementById(id);if(s)so.observe(s)})}
+
+/* card spotlight */
+const SP='.lab,.cc,.syllogism .step,.org,.tell,.ac,.bn,.lie,.fix,.comp,.callout,.verdict,.qbox,.cside,.vl,.mech';
+addEventListener('pointermove',e=>{const c=e.target&&e.target.closest&&e.target.closest(SP);if(!c)return;
+  const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+
+/* staggered reveals */
+$$('.syllogism,.cgrid,.bignum,.act,.orggrid,.tells,.quietlie').forEach(g=>[...g.children].filter(c=>c.classList.contains('reveal')&&!c.classList.contains('in')).forEach((el,i)=>{
+  el.style.transitionDelay=(i%3)*90+'ms';el.addEventListener('transitionend',()=>{el.style.transitionDelay=''},{once:true})}));
+
+/* count-up */
+function cu(el){const to=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'';
+  const fin=()=>{el.textContent=pre+to.toLocaleString('en-US')+suf};
+  if(RM||!window.requestAnimationFrame||!window.performance)return fin();
+  const t0=performance.now(),D=1600;
+  (function f(t){const p=Math.min(1,Math.max(0,(t-t0)/D)),e=1-Math.pow(1-p,4);
+    el.textContent=pre+Math.round(to*e).toLocaleString('en-US')+suf;if(p<1)requestAnimationFrame(f);else fin()})(t0)}
+if(HAS_IO){const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){cu(e.target);co.unobserve(e.target)}}),{threshold:.4});
+  $$('[data-count]').forEach(el=>co.observe(el))}
+
+/* share */
+const sh=$('#shpop');
+if(sh){const url=location.origin+location.pathname,txt=document.body.dataset.sharetext||document.title;
+  $('#sh-x').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(txt)+'&url='+encodeURIComponent(url);
+  $('#sh-li').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
+  const cp=$('#sh-cp');
+  cp.addEventListener('click',()=>{const done=()=>{cp.textContent='Link copied ✓';setTimeout(()=>{cp.textContent='Copy link'},1800)};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(done,()=>{});
+    else{const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy');done()}catch(_){}t.remove()}});
+  document.addEventListener('click',e=>{const s=e.target.closest&&e.target.closest('[data-share]');
+    if(s){e.preventDefault();if(dock)dock.classList.add('vis');sh.classList.toggle('on');return}
+    if(!(e.target.closest&&e.target.closest('#shpop')))sh.classList.remove('on')})}
+
+/* keyboard */
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){const m=$('#modal');if(m)m.classList.remove('show');if(sh)sh.classList.remove('on');if(nav)nav.classList.remove('open')}
+  if((e.key==='Enter'||e.key===' ')&&e.target&&e.target.matches&&e.target.matches('.lab,.tell')){e.preventDefault();e.target.click()}});
+
+/* hero: convergence field — many builders, one apex */
+const cv=$('#fx');
+if(cv&&cv.getContext){const x=cv.getContext('2d');if(x){
+  let W=0,H=0,ax=0,ay=0,P=[],run=true,raf=0;const dpr=Math.min(2,window.devicePixelRatio||1);
+  const AX=+cv.dataset.ax||.76,AY=+cv.dataset.ay||.36;
+  const mk=init=>({sx:Math.random()*W,sy:H+8+Math.random()*40,t:init?Math.random():0,v:.0014+Math.random()*.003,b:(Math.random()-.5)*.6,s:.7+Math.random()*1.6});
+  function size(){const r=cv.getBoundingClientRect();W=r.width;H=r.height;if(!W||!H)return;cv.width=W*dpr;cv.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    const m=W<900;ax=W*(m?.84:AX);ay=m?96:H*AY;const n=m?200:Math.min(760,Math.round(W*.48));P=[];for(let i=0;i<n;i++)P.push(mk(true))}
+  function draw(){if(!W)return;x.clearRect(0,0,W,H);
+    const R=Math.max(170,W*.17),g=x.createRadialGradient(ax,ay,0,ax,ay,R);
+    g.addColorStop(0,'rgba(255,77,77,.42)');g.addColorStop(.3,'rgba(255,120,60,.12)');g.addColorStop(1,'rgba(255,77,77,0)');
+    x.fillStyle=g;x.fillRect(ax-R,ay-R,R*2,R*2);
+    x.lineWidth=1;for(let i=0;i<=16;i++){x.strokeStyle='rgba(255,255,255,'+(i%4?0.028:0.05)+')';x.beginPath();x.moveTo(W*i/16,H);x.lineTo(ax,ay);x.stroke()}
+    for(const p of P){p.t+=p.v;if(p.t>=1)Object.assign(p,mk(false));
+      const e=p.t*p.t*(3-2*p.t),cx=p.sx+(ax-p.sx)*e+Math.sin(p.t*Math.PI)*p.b*W*.1,cy=p.sy+(ay-p.sy)*e;
+      const a=Math.min(1,p.t*5)*(.16+.8*e),s=p.s*(1-.4*e);
+      x.fillStyle='rgba('+Math.round(138+117*e)+','+Math.round(138-61*e)+','+Math.round(160-83*e)+','+a.toFixed(3)+')';
+      x.beginPath();x.arc(cx,cy,s,0,6.2832);x.fill()}
+    x.strokeStyle='rgba(255,130,130,.95)';x.lineWidth=1.6;x.beginPath();x.moveTo(ax,ay-22);x.lineTo(ax+20,ay+13);x.lineTo(ax-20,ay+13);x.closePath();
+    x.fillStyle='rgba(255,77,77,.22)';x.fill();x.stroke();
+    x.fillStyle='#fff';x.beginPath();x.arc(ax,ay+1,3.2,0,6.2832);x.fill()}
+  function loop(){raf=0;draw();if(run&&!RM)raf=requestAnimationFrame(loop)}
+  size();addEventListener('resize',()=>{size();if(!raf)loop()});
+  if(HAS_IO)new IntersectionObserver(es=>{run=es[0].isIntersecting;if(run&&!raf)loop()}).observe(cv);
+  loop();
+}}
+})();
+
+(function(){
+const ci=document.getElementById('cidx');
+if(ci&&typeof LABS!=='undefined'){ci.innerHTML=[...LABS].sort((a,b)=>b.conc-a.conc).map(l=>
+  '<div class="cr" style="--c:'+l.color+';--w:'+l.conc+'%"><div class="cn">'+l.nm.replace(' Superintelligence Labs','')+
+  '<small>'+l.badge.split(' · ')[0]+'</small></div><div class="cb"><div class="cfi"></div></div><div class="cv">'+l.conc+'</div></div>').join('')}
+})();
+</script>
+</body>
+</html>

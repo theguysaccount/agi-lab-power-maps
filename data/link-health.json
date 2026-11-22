@@ -1,0 +1,77 @@
+{
+ "checked": "2026-11-22",
+ "results": {
+  "https://openai.com/our-structure": {
+   "status": "ok",
+   "http": 308,
+   "error": "",
+   "since": null,
+   "refs": [
+    "1"
+   ]
+  },
+  "https://en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI": {
+   "status": "ok",
+   "http": 200,
+   "error": "",
+   "since": null,
+   "refs": [
+    "1"
+   ]
+  },
+  "https://openai.com/index/evolving-our-structure": {
+   "status": "ok",
+   "http": 308,
+   "error": "",
+   "since": null,
+   "refs": [
+    "2"
+   ]
+  },
+  "https://en.wikipedia.org/wiki/Musk_v._Altman": {
+   "status": "ok",
+   "http": 200,
+   "error": "",
+   "since": null,
+   "refs": [
+    "3"
+   ]
+  },
+  "https://anthropic.com/news/the-long-term-benefit-trust": {
+   "status": "ok",
+   "http": 200,
+   "error": "",
+   "since": null,
+   "refs": [
+    "4"
+   ]
+  },
+  "https://ailabwatch.org/blog/anthropic-certificate-of-incorporation": {
+   "status": "ok",
+   "http": 200,
+   "error": "",
+   "since": null,
+   "refs": [
+    "5"
+   ]
+  },
+  "https://en.wikipedia.org/wiki/DeepSeek": {
+   "status": "ok",
+   "http": 200,
+   "error": "",
+   "since": null,
+   "refs": [
+    "7"
+   ]
+  },
+  "https://deepmind.google/responsibility-and-safety": {
+   "status": "ok",
+   "http": 200,
+   "error": "",
+   "since": null,
+   "refs": [
+    "9"
+   ]
+  }
+ }
+}

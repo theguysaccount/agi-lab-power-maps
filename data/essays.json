@@ -1,0 +1,766 @@
+{
+ "labs": [
+  {
+   "nm": "OpenAI",
+   "loc": "San Francisco · USA",
+   "cls": [
+    "board"
+   ],
+   "badge": "NONPROFIT-CONTROLLED PBC",
+   "bClass": "b-mix",
+   "color": "#ffb13d",
+   "conc": 62,
+   "rows": [
+    [
+     "MODEL",
+     "GPT series, frontier AGI mission"
+    ],
+    [
+     "FORM",
+     "OpenAI Group PBC, controlled by OpenAI Foundation"
+    ],
+    [
+     "EQUITY",
+     "Foundation 26% · Microsoft 27% · others 47%"
+    ]
+   ],
+   "whoLbl": "ULTIMATE CONTROL",
+   "who": "The <b>OpenAI Foundation board</b> — 8 directors incl. CEO Sam Altman",
+   "chainSub": "The nonprofit Foundation appoints and can remove the entire for-profit board at any time.",
+   "chain": [
+    {
+     "role": "THE TOOL",
+     "who": "OpenAI Group PBC",
+     "d": "For-profit public-benefit corp that builds and ships the models."
+    },
+    {
+     "role": "CONTROLS IT",
+     "who": "OpenAI Foundation",
+     "d": "Nonprofit; holds special voting rights + a 26% stake (~$130B). Appoints/removes all PBC directors."
+    },
+    {
+     "role": "RUNS THE FOUNDATION",
+     "who": "8-person board",
+     "d": "Bret Taylor (chair), Adam D'Angelo, Sue Desmond-Hellmann, Zico Kolter, Gen. Paul Nakasone, Adebayo Ogunlesi, Nicole Seligman, Sam Altman."
+    },
+    {
+     "role": "SAFETY CHECK",
+     "who": "Safety & Security Committee",
+     "d": "Sits inside the Foundation; oversees safety across all of OpenAI."
+    },
+    {
+     "role": "OPEN QUESTION",
+     "who": "Who checks the board?",
+     "d": "The directors are self-perpetuating and answer to no electorate or external trust."
+    }
+   ],
+   "slug": "openai"
+  },
+  {
+   "nm": "Anthropic",
+   "loc": "San Francisco · USA",
+   "cls": [
+    "trust"
+   ],
+   "badge": "TRUST-CHECKED PBC · WITH A FAILSAFE",
+   "bClass": "b-trust",
+   "color": "#3ddc97",
+   "conc": 42,
+   "rows": [
+    [
+     "MODEL",
+     "Claude series, frontier + safety mission"
+    ],
+    [
+     "FORM",
+     "Public-benefit corp + Long-Term Benefit Trust"
+    ],
+    [
+     "EQUITY",
+     "Founders + Amazon & Google as major investors"
+    ]
+   ],
+   "whoLbl": "ULTIMATE CONTROL — CONTESTED",
+   "who": "The <b>Long-Term Benefit Trust</b> — unless a stockholder supermajority bends around it",
+   "chainSub": "The most structurally checked of the major labs — but the charter contains 'failsafe' provisions that let a large enough stockholder supermajority amend or dissolve the Trust without the trustees' consent.",
+   "chain": [
+    {
+     "role": "THE TOOL",
+     "who": "Anthropic PBC",
+     "d": "Builds Claude; legally bound to its public-benefit mission."
+    },
+    {
+     "role": "BOARD",
+     "who": "Board of directors",
+     "d": "Sets company direction; a majority is now appointed by the Trust."
+    },
+    {
+     "role": "CHECKS THE BOARD",
+     "who": "Long-Term Benefit Trust",
+     "d": "5 independent, equity-free trustees (AI safety, national security, policy) — incl. Vas Narasimhan, M-F. Cuéllar, Richard Fontaine. Hold Class T stock to elect/remove a board majority."
+    },
+    {
+     "role": "THE BEND-AROUND",
+     "who": "Stockholder supermajority 'failsafe'",
+     "d": "Anthropic's charter lets a sufficiently large supermajority of stockholders amend the Trust's powers — or dissolve it — WITHOUT trustee consent. Critics note large investors like Amazon & Google could plausibly form such a bloc."
+    },
+    {
+     "role": "OPEN QUESTION",
+     "who": "How strong is it, really?",
+     "d": "The supermajority thresholds are undisclosed and the full Trust Agreement is unpublished. Until it's tested, the strongest check in the industry is also the least verifiable."
+    }
+   ],
+   "slug": "anthropic"
+  },
+  {
+   "nm": "Google DeepMind",
+   "loc": "London · UK",
+   "cls": [
+    "board"
+   ],
+   "badge": "INSIDE A PUBLIC MEGACORP",
+   "bClass": "b-mix",
+   "color": "#5b8def",
+   "conc": 55,
+   "rows": [
+    [
+     "MODEL",
+     "Gemini series, AGI by ~2030 (Hassabis)"
+    ],
+    [
+     "FORM",
+     "Division of Alphabet Inc."
+    ],
+    [
+     "EQUITY",
+     "Wholly owned by Alphabet; founders hold super-voting Alphabet shares"
+    ]
+   ],
+   "whoLbl": "ULTIMATE CONTROL",
+   "who": "<b>Alphabet</b> — and via super-voting stock, founders Page & Brin",
+   "chainSub": "DeepMind has internal safety councils, but final authority rolls up to Alphabet, where two founders retain majority voting power.",
+   "chain": [
+    {
+     "role": "THE TOOL",
+     "who": "Google DeepMind",
+     "d": "Builds Gemini and frontier research; Demis Hassabis is Alphabet's top AI exec."
+    },
+    {
+     "role": "SAFETY COUNCILS",
+     "who": "AGI Safety Council + RSC",
+     "d": "Led by Shane Legg; Frontier Safety Framework gates deployment. Advisory to corporate leadership."
+    },
+    {
+     "role": "OWNS IT",
+     "who": "Alphabet Inc.",
+     "d": "Public company; DeepMind is a wholly-owned division with no independent governance over its mission."
+    },
+    {
+     "role": "CONTROLS ALPHABET",
+     "who": "Larry Page & Sergey Brin",
+     "d": "Super-voting Class B shares give the co-founders majority voting control despite minority economics."
+    },
+    {
+     "role": "OPEN QUESTION",
+     "who": "Mission vs. shareholders",
+     "d": "A public company's duty runs to shareholders; safety councils have no binding veto over the founders."
+    }
+   ],
+   "slug": "google-deepmind"
+  },
+  {
+   "nm": "Meta Superintelligence Labs",
+   "loc": "Menlo Park · USA",
+   "cls": [
+    "lock"
+   ],
+   "badge": "FOUNDER LOCK · DUAL-CLASS",
+   "bClass": "b-lock",
+   "color": "#ff4d4d",
+   "conc": 74,
+   "rows": [
+    [
+     "MODEL",
+     "Llama series + 'superintelligence' push"
+    ],
+    [
+     "FORM",
+     "Division of Meta Platforms, Inc."
+    ],
+    [
+     "EQUITY",
+     "Zuckerberg ~13% economic / ~61% voting power"
+    ]
+   ],
+   "whoLbl": "ULTIMATE CONTROL",
+   "who": "<b>Mark Zuckerberg</b> — majority voting control of all of Meta",
+   "chainSub": "A 'flat' research org sits beneath a company one person controls outright through 10-vote Class B shares.",
+   "chain": [
+    {
+     "role": "THE TOOL",
+     "who": "Meta Superintelligence Labs",
+     "d": "Co-led by Alexandr Wang & Nat Friedman; 'TBD Lab' core team. Built via a $14.3B Scale AI deal + aggressive talent raids."
+    },
+    {
+     "role": "OWNS IT",
+     "who": "Meta Platforms, Inc.",
+     "d": "Public company; the lab is a division with no separate governance."
+    },
+    {
+     "role": "CONTROLS META",
+     "who": "Mark Zuckerberg",
+     "d": "Owns ~99.7% of Class B shares (10 votes each) → ~61% of total voting power on ~13% economic stake. Cannot be outvoted."
+    },
+    {
+     "role": "SAFETY CHECK",
+     "who": "None binding",
+     "d": "No independent trust or external veto; deployment decisions are corporate, ultimately the founder's."
+    },
+    {
+     "role": "OPEN QUESTION",
+     "who": "Who can say no?",
+     "d": "Structurally, no shareholder coalition or board can override Zuckerberg."
+    }
+   ],
+   "slug": "meta-superintelligence-labs"
+  },
+  {
+   "nm": "xAI",
+   "loc": "Bay Area / Texas · USA",
+   "cls": [
+    "lock"
+   ],
+   "badge": "FOUNDER-OWNED",
+   "bClass": "b-lock",
+   "color": "#ff4d4d",
+   "conc": 90,
+   "rows": [
+    [
+     "MODEL",
+     "Grok series; merged with X (Mar 2025)"
+    ],
+    [
+     "FORM",
+     "Private company (xAI Holdings, owns X)"
+    ],
+    [
+     "EQUITY",
+     "Musk ~59% direct ownership of combined entity"
+    ]
+   ],
+   "whoLbl": "ULTIMATE CONTROL",
+   "who": "<b>Elon Musk</b> — majority owner and final decision-maker",
+   "chainSub": "The least diffused structure of any major lab: one person owns the majority, the platform, and the roadmap.",
+   "chain": [
+    {
+     "role": "THE TOOL",
+     "who": "Grok / xAI models",
+     "d": "Frontier models trained on Colossus supercluster; distributed through X to hundreds of millions."
+    },
+    {
+     "role": "OWNS IT",
+     "who": "xAI Holdings",
+     "d": "Private; absorbed X (Twitter) in an all-stock deal valuing xAI at ~$80B. Backed in part by SpaceX capital."
+    },
+    {
+     "role": "CONTROLS IT",
+     "who": "Elon Musk",
+     "d": "~59% direct economic ownership of the combined company; also controls the X distribution platform."
+    },
+    {
+     "role": "SAFETY CHECK",
+     "who": "None independent",
+     "d": "No oversight trust, no public benefit lock, no external board with a veto."
+    },
+    {
+     "role": "OPEN QUESTION",
+     "who": "Concentration ceiling",
+     "d": "Owner of the model, the compute partner, and the megaphone — the tightest single-person stack in the field."
+    }
+   ],
+   "slug": "xai"
+  },
+  {
+   "nm": "DeepSeek",
+   "loc": "Hangzhou · China",
+   "cls": [
+    "lock",
+    "state"
+   ],
+   "badge": "FOUNDER + STATE-ADJACENT",
+   "bClass": "b-lock",
+   "color": "#ff4d4d",
+   "conc": 80,
+   "rows": [
+    [
+     "MODEL",
+     "DeepSeek V/R series, open-weight frontier"
+    ],
+    [
+     "FORM",
+     "Spun out of hedge fund High-Flyer"
+    ],
+    [
+     "EQUITY",
+     "Liang Wenfeng ~84% via holding entities"
+    ]
+   ],
+   "whoLbl": "ULTIMATE CONTROL",
+   "who": "<b>Liang Wenfeng</b> — ~84% owner, sole controller",
+   "chainSub": "Privately controlled by one founder — but operating inside the PRC, where the state can assert authority over strategic tech.",
+   "chain": [
+    {
+     "role": "THE TOOL",
+     "who": "DeepSeek models",
+     "d": "Open-weight frontier models built remarkably cheaply; reset global cost assumptions in 2025."
+    },
+    {
+     "role": "OWNS IT",
+     "who": "Liang Wenfeng",
+     "d": "Holds ~84% via two holding companies; also CEO of parent hedge fund High-Flyer. Declines outside investors to keep control."
+    },
+    {
+     "role": "FUNDED BY",
+     "who": "High-Flyer",
+     "d": "Quant hedge fund; principal backer. Built with private, not state, capital — initially."
+    },
+    {
+     "role": "OPERATES UNDER",
+     "who": "PRC jurisdiction",
+     "d": "Chinese law gives the state broad latitude over strategically important technology and data."
+    },
+    {
+     "role": "OPEN QUESTION",
+     "who": "Founder or state?",
+     "d": "Nominal private control sits beneath a government that can redirect strategic assets."
+    }
+   ],
+   "slug": "deepseek"
+  }
+ ],
+ "orgs": [
+  {
+   "nm": "OpenAI",
+   "hc": "~4,500 → 8,000 staff",
+   "color": "#ffb13d",
+   "ctrlL": "ULTIMATE CONTROL",
+   "ctrl": "OpenAI Foundation board (incl. Sam Altman)",
+   "fact": "Foundation appoints & can remove the entire PBC board at will. No employee vote.",
+   "ref": "1"
+  },
+  {
+   "nm": "Anthropic",
+   "hc": "~3,000–5,000 staff",
+   "color": "#ffb13d",
+   "ctrlL": "ULTIMATE CONTROL — CONTESTED",
+   "ctrl": "LTBT — overridable by stockholder supermajority",
+   "fact": "Most checked of the labs, but the charter has a trustee-free 'failsafe' dissolution path.",
+   "ref": "5"
+  },
+  {
+   "nm": "Google DeepMind",
+   "hc": "~6,000 staff",
+   "color": "#5b8def",
+   "ctrlL": "ULTIMATE CONTROL",
+   "ctrl": "Alphabet → Page & Brin (super-voting)",
+   "fact": "Safety councils advisory; founders hold majority voting control of the parent.",
+   "ref": "9"
+  },
+  {
+   "nm": "Meta Superintelligence Labs",
+   "hc": "~3,400 staff",
+   "color": "#ff4d4d",
+   "ctrlL": "ULTIMATE CONTROL",
+   "ctrl": "Mark Zuckerberg",
+   "fact": "~61% of Meta's votes on ~13% economics. Cannot be outvoted. No independent veto.",
+   "ref": "6"
+  },
+  {
+   "nm": "xAI",
+   "hc": "~1,200 staff",
+   "color": "#ff4d4d",
+   "ctrlL": "ULTIMATE CONTROL",
+   "ctrl": "Elon Musk",
+   "fact": "~59% direct ownership of xAI+X. Owns model, compute partner, and distribution.",
+   "ref": "8"
+  },
+  {
+   "nm": "DeepSeek",
+   "hc": "small, tightly-held",
+   "color": "#ff4d4d",
+   "ctrlL": "ULTIMATE CONTROL",
+   "ctrl": "Liang Wenfeng (~84%)",
+   "fact": "Sole control via holding companies — under PRC strategic-tech jurisdiction.",
+   "ref": "7"
+  }
+ ],
+ "fixes": [
+  {
+   "nm": "OpenAI",
+   "color": "#ffb13d",
+   "tag": "RESTORE THE CAP & THE BRAKES",
+   "why": "OpenAI removed its profit cap, converted to a PBC, and—after the 2023 board episode—rebuilt a board that answers to itself. The fix is to make the nonprofit's control real and the brakes un-removable.",
+   "steps": [
+    [
+     "Reinstate a hard, binding return cap.",
+     "Re-impose a legally enforceable ceiling on investor returns. Without it, fiduciary pressure to extract infinite value from AGI will eventually override the public-benefit mandate."
+    ],
+    [
+     "Make Foundation control irrevocable & externally accountable.",
+     "The Foundation's authority over the PBC must be locked so it can't be quietly re-papered, and its board must answer to an external body, not perpetuate itself."
+    ],
+    [
+     "Give the Safety & Security Committee a binding veto.",
+     "Move it from oversight-in-name to a real deployment gate that the CEO and board cannot override or dissolve, with protection from retaliatory removal."
+    ],
+    [
+     "Put model weights in nonprofit custody on a revocable license.",
+     "The Foundation should legally own the foundational weights; the PBC operates them under license that auto-revokes if the mission is breached."
+    ]
+   ]
+  },
+  {
+   "nm": "Anthropic",
+   "color": "#3ddc97",
+   "tag": "CLOSE THE TRAPDOORS",
+   "why": "Anthropic is the most checked of the labs—but its charter leaves structural trapdoors that leave it vulnerable to a shareholder revolt. To actually guarantee a good future, those trapdoors must be removed.",
+   "steps": [
+    [
+     "Revoke the shareholder override.",
+     "Amend the charter to make the Long-Term Benefit Trust completely irrevocable. The clause letting a stockholder supermajority bypass or dissolve the Trust must be legally destroyed, giving the Trust absolute, unchallengeable authority over the board."
+    ],
+    [
+     "Accelerate majority board control — now.",
+     "The Trust currently elects only a minority, with majority control promised later. Execute that transition immediately. Waiting until models reach superintelligence guarantees investors who grasp the financial implications will aggressively block the handover."
+    ],
+    [
+     "Establish cryptographic IP custody.",
+     "Transfer legal ownership of the foundational model weights directly into the Trust. The commercial PBC operates only on a revocable license—so if investors attempt a corporate coup, the Trust revokes it and instantly destroys the rogue entity's commercial value."
+    ],
+    [
+     "Implement a hard capital cap.",
+     "Enforce a strict, legally binding cap on investor returns. Without an explicit ceiling, the pressure to squeeze infinite value from superintelligence will break the PBC mandate and force the board to choose between human safety and investor lawsuits."
+    ]
+   ]
+  },
+  {
+   "nm": "Google DeepMind",
+   "color": "#5b8def",
+   "tag": "BREAK IT OUT OF ALPHABET",
+   "why": "DeepMind's safety councils are advisory and final authority rolls up to Alphabet, where two founders hold super-voting control answerable to shareholders. Frontier AGI cannot be governed by a public company's profit duty.",
+   "steps": [
+    [
+     "Spin frontier work into a mission-locked entity.",
+     "Move AGI development into a PBC or foundation-controlled vehicle, ring-fenced from Alphabet's shareholder-return obligation."
+    ],
+    [
+     "Give the AGI Safety Council a binding veto.",
+     "Convert it from advisory to a hard deployment gate that corporate leadership and the founders cannot override."
+    ],
+    [
+     "Ring-fence AGI decisions from super-voting control.",
+     "Remove the founders' ability to unilaterally steer frontier deployment via Alphabet's dual-class structure."
+    ],
+    [
+     "Custody the weights in the mission entity.",
+     "Foundational weights owned by the mission vehicle, licensed to the commercial side on revocable terms."
+    ]
+   ]
+  },
+  {
+   "nm": "Meta Superintelligence Labs",
+   "color": "#ff4d4d",
+   "tag": "END THE FOUNDER LOCK",
+   "why": "One person holds ~61% of Meta's votes on ~13% economics and cannot be outvoted. There is no independent safety veto. Superintelligence cannot be governed by a single uncheckable will.",
+   "steps": [
+    [
+     "Strip super-voting power over AI governance.",
+     "Zuckerberg's 10-vote Class B shares must not control superintelligence decisions; create a separate governance class for the AI mission."
+    ],
+    [
+     "Seat an independent board majority with a safety veto.",
+     "Directors not appointed by or loyal to the founder, holding a real deployment kill-switch."
+    ],
+    [
+     "Put the weights under an independent mission trust.",
+     "Owned by the trust, licensed to Meta on revocable terms tied to the public-benefit mandate."
+    ],
+    [
+     "Cap returns and lock the public benefit.",
+     "Bind the AI division to a return ceiling and an enforceable benefit charter, not Meta's at-will profit motive."
+    ]
+   ]
+  },
+  {
+   "nm": "xAI",
+   "color": "#ff4d4d",
+   "tag": "SEPARATE OWNER, MODEL & MEGAPHONE",
+   "why": "One founder directly owns ~59% of a merged entity that controls the model, the compute partner, and the distribution platform (X). That is the tightest single-person stack in the field.",
+   "steps": [
+    [
+     "Move the weights into an independent trust.",
+     "Take the foundational model out of single-person ownership and into a mission-locked custodian on a revocable license."
+    ],
+    [
+     "Decouple the model from the megaphone.",
+     "Separate xAI's models from control of X so one person can't pair a frontier system with a mass distribution channel."
+    ],
+    [
+     "Install an independent board with a safety veto.",
+     "Real external directors who can halt deployment, not advise it."
+    ],
+    [
+     "Cap returns and define a binding public benefit.",
+     "Convert open-ended founder upside into a capped, mission-bound structure."
+    ]
+   ]
+  },
+  {
+   "nm": "DeepSeek",
+   "color": "#ff4d4d",
+   "tag": "THE HARDEST CASE",
+   "why": "Sole control sits with one owner (~84%) operating under PRC jurisdiction, where the state can assert authority over strategic technology. Structural reform here is the hardest of any lab—and the most important to be honest about.",
+   "steps": [
+    [
+     "Insulate governance from sole-owner and state direction.",
+     "An independent custodian for frontier weights, legally separated from any single owner or directive authority."
+    ],
+    [
+     "Keep open weights, add a mission-locked custodian.",
+     "Open release is a partial check on monopoly, but frontier weights still need a governance body, not just a license."
+    ],
+    [
+     "Establish external safety oversight.",
+     "Independent evaluation with the power to gate the most capable releases."
+    ],
+    [
+     "Be transparent about state relationship.",
+     "Public disclosure of any governmental control or access, so the real chain of authority isn't hidden."
+    ]
+   ]
+  }
+ ],
+ "pitches": [
+  {
+   "pitch": "We're a capped-profit nonprofit. No one captures the upside of AGI.",
+   "record": "The cap came off. In 2025 OpenAI's for-profit became a public benefit corporation with no ceiling on investor returns. Twelve former employees filed a brief saying the company abandoned its nonprofit roots.",
+   "refs": [
+    "2",
+    "3"
+   ],
+   "subject": "OPENAI"
+  },
+  {
+   "pitch": "An independent trust keeps us honest — it can even replace the board.",
+   "record": "True — until you read the charter. Anthropic's own incorporation docs let a stockholder supermajority amend or dissolve the Long-Term Benefit Trust without the trustees' consent. The thresholds are undisclosed; the full agreement is unpublished. Critics note Amazon & Google could plausibly form such a bloc.",
+   "refs": [
+    "4",
+    "5"
+   ],
+   "subject": "ANTHROPIC"
+  },
+  {
+   "pitch": "Safety has a real seat at the table here.",
+   "record": "At Google DeepMind the AGI Safety Council and RSC are advisory ; final authority rolls up to Alphabet, where founders Page & Brin hold super-voting control. At Meta and xAI there is no independent safety veto at all.",
+   "refs": [
+    "9",
+    "6"
+   ],
+   "subject": "DEEPMIND / META / xAI"
+  },
+  {
+   "pitch": "If leadership ever went wrong, the board would stop them.",
+   "record": "OpenAI's safety-oriented board tried exactly that in November 2023. Within days the CEO was reinstated and most of the board was replaced. The lesson the industry took away was not \"respect the brakes\" — it was \"remove them.\"",
+   "refs": [
+    "1"
+   ],
+   "subject": "OPENAI, 2023"
+  }
+ ],
+ "stats": [
+  {
+   "value": "~13% → 61%",
+   "lab": "Meta",
+   "text": "Mark Zuckerberg's economic stake vs. his voting power, via 10-vote Class B shares. He cannot be outvoted.",
+   "ref": "6"
+  },
+  {
+   "value": "~84%",
+   "lab": "DeepSeek",
+   "text": "Liang Wenfeng's ownership through holding companies — sole control of a frontier lab.",
+   "ref": "7"
+  },
+  {
+   "value": "~59%",
+   "lab": "xAI",
+   "text": "Elon Musk's direct ownership of the merged model-plus-platform empire.",
+   "ref": "8"
+  }
+ ],
+ "references": {
+  "asOf": "Governance and ownership facts as of late 2025 / early 2026.",
+  "caveat": "Concentration is an editorial reading of public filings — directional, not precise.",
+  "refs": [
+   {
+    "n": "1",
+    "label": "OpenAI — \"Our Structure\" & the Nov 2023 board removal & reinstatement of Sam Altman.",
+    "cites": [
+     {
+      "text": "openai.com/our-structure",
+      "url": "https://openai.com/our-structure",
+      "linked": true
+     },
+     {
+      "text": "en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI",
+      "url": "https://en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI",
+      "linked": true
+     }
+    ]
+   },
+   {
+    "n": "2",
+    "label": "OpenAI's 2025 conversion to a Public Benefit Corporation under the OpenAI Foundation (no return cap).",
+    "cites": [
+     {
+      "text": "openai.com/index/evolving-our-structure",
+      "url": "https://openai.com/index/evolving-our-structure",
+      "linked": true
+     },
+     {
+      "text": "nbcnews.com",
+      "url": "https://nbcnews.com",
+      "linked": false
+     }
+    ]
+   },
+   {
+    "n": "3",
+    "label": "Twelve former OpenAI employees' amicus brief; Musk v. Altman (verdict May 2026).",
+    "cites": [
+     {
+      "text": "en.wikipedia.org/wiki/Musk_v._Altman",
+      "url": "https://en.wikipedia.org/wiki/Musk_v._Altman",
+      "linked": true
+     },
+     {
+      "text": "technologyreview.com",
+      "url": "https://technologyreview.com",
+      "linked": false
+     }
+    ]
+   },
+   {
+    "n": "4",
+    "label": "Anthropic — \"The Long-Term Benefit Trust.\"",
+    "cites": [
+     {
+      "text": "anthropic.com/news/the-long-term-benefit-trust",
+      "url": "https://anthropic.com/news/the-long-term-benefit-trust",
+      "linked": true
+     }
+    ]
+   },
+   {
+    "n": "5",
+    "label": "Analysis of Anthropic's charter \"failsafe\" — stockholder supermajority can amend/dissolve the Trust.",
+    "cites": [
+     {
+      "text": "ailabwatch.org/blog/anthropic-certificate-of-incorporation",
+      "url": "https://ailabwatch.org/blog/anthropic-certificate-of-incorporation",
+      "linked": true
+     },
+     {
+      "text": "lesswrong.com",
+      "url": "https://lesswrong.com",
+      "linked": false
+     }
+    ]
+   },
+   {
+    "n": "6",
+    "label": "Meta dual-class structure — Zuckerberg ~13% economic / ~61% voting.",
+    "cites": [
+     {
+      "text": "citizen.org",
+      "url": "https://citizen.org",
+      "linked": false
+     },
+     {
+      "text": "ainvest.com",
+      "url": "https://ainvest.com",
+      "linked": false
+     }
+    ]
+   },
+   {
+    "n": "7",
+    "label": "DeepSeek ownership — Liang Wenfeng ~84% via holding entities; spun out of High-Flyer.",
+    "cites": [
+     {
+      "text": "en.wikipedia.org/wiki/DeepSeek",
+      "url": "https://en.wikipedia.org/wiki/DeepSeek",
+      "linked": true
+     }
+    ]
+   },
+   {
+    "n": "8",
+    "label": "xAI acquires X (Mar 2025); Musk ~59% of the combined entity.",
+    "cites": [
+     {
+      "text": "cnbc.com",
+      "url": "https://cnbc.com",
+      "linked": false
+     },
+     {
+      "text": "fintechweekly.com",
+      "url": "https://fintechweekly.com",
+      "linked": false
+     }
+    ]
+   },
+   {
+    "n": "9",
+    "label": "Google DeepMind safety governance — AGI Safety Council & Responsibility & Safety Council (advisory).",
+    "cites": [
+     {
+      "text": "deepmind.google/responsibility-and-safety",
+      "url": "https://deepmind.google/responsibility-and-safety",
+      "linked": true
+     }
+    ]
+   },
+   {
+    "n": "10",
+    "label": "Approximate workforce figures: OpenAI ~4,500→8,000 (2026); Anthropic ~3,000–5,000; DeepMind ~6,000; Meta Superintelligence Labs ~3,400; xAI ~1,200.",
+    "cites": [
+     {
+      "text": "saastr.com",
+      "url": "https://saastr.com",
+      "linked": false
+     },
+     {
+      "text": "engadget.com",
+      "url": "https://engadget.com",
+      "linked": false
+     },
+     {
+      "text": "builtin.com",
+      "url": "https://builtin.com",
+      "linked": false
+     },
+     {
+      "text": "time.com",
+      "url": "https://time.com",
+      "linked": false
+     }
+    ]
+   }
+  ]
+ },
+ "published": {
+  "by": "Persist Ventures",
+  "date": "May 2026"
+ },
+ "synced": "2026-11-22"
+}
