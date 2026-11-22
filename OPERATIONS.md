@@ -1,7 +1,8 @@
 # Operations
 
-Live at https://theguysaccount.github.io/agi-lab-power-maps/, a companion to the live essays at
-https://power.scalingefficiency.com/ and https://fix.agireadiness.com/ (which this repo never touches).
+Live at https://labs.agireadiness.com/, a companion to the live essays at https://power.scalingefficiency.com/ and
+https://fix.agireadiness.com/ (which this repo never touches). The first address,
+https://theguysaccount.github.io/agi-lab-power-maps/, redirects there.
 
 ## Automated jobs
 
@@ -36,7 +37,7 @@ The facts age; the companion must not update them itself. Quarterly, for the ess
 
 | Key | Why | Exact steps |
 |---|---|---|
-| **Custom domain** | Put the lab pages on the essays' domain | 1) SiteGround → agireadiness.com → DNS Zone Editor: `CNAME labs → theguysaccount.github.io` 2) `~/.local/bin/gh api -X PUT repos/theguysaccount/agi-lab-power-maps/pages -f cname=labs.agireadiness.com` 3) `~/.local/bin/gh variable set SITE_URL -R theguysaccount/agi-lab-power-maps -b https://labs.agireadiness.com` 4) `~/.local/bin/gh workflow run deploy.yml -R theguysaccount/agi-lab-power-maps` 5) after the certificate is issued: `~/.local/bin/gh api -X PUT repos/theguysaccount/agi-lab-power-maps/pages -F https_enforced=true`. The fix. and www records are untouched. |
+| **Custom domain** (turned 2026-11-22) | The lab pages on the essays' domain | In place since the domain rollout on 2026-11-22: SiteGround → agireadiness.com → DNS Zone Editor has `CNAME labs → theguysaccount.github.io.`, the Pages custom domain is `labs.agireadiness.com` with HTTPS enforced, and the repo variable `SITE_URL` is `https://labs.agireadiness.com`, the one setting every page, sitemap and check reads. The fix. and www records are untouched; agireadiness.com is renewed to November 2027. **To move to another host:** add its CNAME, then `~/.local/bin/gh api -X PUT repos/theguysaccount/agi-lab-power-maps/pages -f cname=<host>`, `~/.local/bin/gh variable set SITE_URL -R theguysaccount/agi-lab-power-maps -b https://<host>`, `~/.local/bin/gh workflow run deploy.yml -R theguysaccount/agi-lab-power-maps`, and once the certificate is issued `~/.local/bin/gh api -X PUT repos/theguysaccount/agi-lab-power-maps/pages -F https_enforced=true`; then delete the old CNAME. **To go back to github.io:** `~/.local/bin/gh api -X PUT repos/theguysaccount/agi-lab-power-maps/pages --input - <<< '{"cname":null}'`, `~/.local/bin/gh variable delete SITE_URL -R theguysaccount/agi-lab-power-maps`, `~/.local/bin/gh workflow run deploy.yml -R theguysaccount/agi-lab-power-maps`, then delete `CNAME labs` in the SiteGround zone straight away: a CNAME left pointing at GitHub Pages with no site claiming it can be taken over. |
 | **Refresh the facts** | Clear "review due" | Update the live essays (facts, "as of" sentence, the "Built for … · <Month Year>" line). The next weekly sync follows. |
 | **Specific sources** | 12 citations name only an outlet | Replace each with the article's URL in the essays' reference list. |
 | **Money** | Donation or grant link | `gh variable set SUPPORT_URL -b <url>` (and `SUPPORT_LABEL`), run `deploy.yml`. |

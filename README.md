@@ -1,6 +1,6 @@
 # AGI Lab Power Maps: who controls the six frontier labs
 
-**Live:** https://theguysaccount.github.io/agi-lab-power-maps/
+**Live:** https://labs.agireadiness.com/
 
 One page per lab (OpenAI, Anthropic, Google DeepMind, Meta, xAI, DeepSeek): who holds ultimate control, the chain of
 command, the essays' editorial concentration score, the sources cited and when each fact was last verified.
